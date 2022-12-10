@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Contrato.init(
     {
+      enderecoBlockchain: DataTypes.STRING,
       imovelId: DataTypes.INTEGER,
       duracao: DataTypes.DATE,
       tipo: DataTypes.STRING,
-      encargos: DataTypes.STRING,
       ultimaFiscalizacao: DataTypes.DATE,
       proximaFiscalizacao: DataTypes.DATE,
       cobrancaArrecadacao: DataTypes.STRING,
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Contrato",
       tableName: "contratos",
+      timestamps: false,
     }
   );
   return Contrato;

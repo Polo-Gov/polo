@@ -1,23 +1,26 @@
 const db = require("../models/index");
-const Contrato = db.Contrato;
 
 class contrato {
+  constructor() {
+    this.db = db.contratos;
+  }
   async criarContrato(
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
     ultimaCobranca,
     status
   ) {
+    let Contrato = await this.db;
     await Contrato.create({
       imovelId: imovelId,
       duracao: duracao,
       tipo: tipo,
-      encargos: encargos,
+      enderecoBlockchain: enderecoBlockchain,
       ultimaFiscalizacao: ultimaFiscalizacao,
       proximaFiscalizacao: proximaFiscalizacao,
       cobrancaArrecadacao: cobrancaArrecadacao,
@@ -31,19 +34,20 @@ class contrato {
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
     ultimaCobranca,
     status
   ) {
+    let Contrato = await this.db;
     await Contrato.update(
       {
         imovelId: imovelId,
         duracao: duracao,
         tipo: tipo,
-        encargos: encargos,
+        enderecoBlockchain: enderecoBlockchain,
         ultimaFiscalizacao: ultimaFiscalizacao,
         proximaFiscalizacao: proximaFiscalizacao,
         cobrancaArrecadacao: cobrancaArrecadacao,
@@ -52,20 +56,23 @@ class contrato {
       },
       {
         where: {
-          id: req.params.id,
+          id: id,
         },
       }
     );
   }
 
-    async acharContrato(id) {
-        return await Contrato.findByPk(id);
-    }
-    acharImovelId(id) {
-        return Contrato.findAll({ where: { imovelId: id } });
-    }
-    acharPorStatus(status) {
-        return Contrato.findAll({ where: { status: status } });
-    }
+  async acharContrato(id) {
+    let Contrato = await this.db;
+    return await Contrato.findByPk(id);
+  }
+  async acharImovelId(id) {
+    let Contrato = await this.db;
+    return Contrato.findAll({}, { where: { imovelId: id } });
+  }
+  async acharPorStatus(status) {
+    let Contrato = await this.db;
+    return Contrato.findAll({}, { where: { status: status } });
+  }
 }
 module.exports = { contrato };

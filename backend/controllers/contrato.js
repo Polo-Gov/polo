@@ -8,7 +8,7 @@ function criarContrato(req, res) {
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
@@ -19,25 +19,30 @@ function criarContrato(req, res) {
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
     ultimaCobranca,
     status
-  ).then((contrato) => {
-    res.send("contrato criado com sucesso");
-  });
+  )
+    .then((contrato) => {
+      res.status(200).send("contrato criado com sucesso");
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
 }
 
 async function alterarContrato(req, res) {
   //update contrato
-  const { id } = req.params.id;
+
   const {
+    id,
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
@@ -49,39 +54,55 @@ async function alterarContrato(req, res) {
     imovelId,
     duracao,
     tipo,
-    encargos,
+    enderecoBlockchain,
     ultimaFiscalizacao,
     proximaFiscalizacao,
     cobrancaArrecadacao,
     ultimaCobranca,
     status
-  ).then((contrato) => {
-    res.send("contrato alterado com sucesso");
-  });
+  )
+    .then((contrato) => {
+      res.status(200).send("contrato alterado com sucesso");
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
 }
 
 function acharContrato(req, res) {
   //find contrato
-  const { id } = req.params.id;
-  Contrato.acharContrato(id).then((contrato) => {
-    res.send(contrato);
-  });
+  const { id } = req.body;
+  Contrato.acharContrato(id)
+    .then((contrato) => {
+      res.status(200).send(contrato);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
 }
 
 function acharPorImovelId(req, res) {
   //find contrato
-  const { imovelId } = req.params.imovelId;
-  Contrato.acharImovelId(imovelId).then((contrato) => {
-    res.send(contrato);
-  });
+  const { imovelId } = req.body;
+  Contrato.acharImovelId(imovelId)
+    .then((contrato) => {
+      res.status(200).send(contrato);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: imovelId });
+    });
 }
 
 function acharPorStatus(req, res) {
   //find contrato
-  const { status } = req.params.status;
-  Contrato.acharPorStatus(status).then((contrato) => {
-    res.send(contrato);
-  });
+  const { status } = req.body.status;
+  Contrato.acharPorStatus(status)
+    .then((contrato) => {
+      res.status(200).send(contrato);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
 }
 
 module.exports = {

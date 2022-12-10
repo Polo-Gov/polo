@@ -20,6 +20,9 @@ module.exports = {
       areaTotal: {
         type: Sequelize.INTEGER,
       },
+      descricao: {
+        type: Sequelize.STRING,
+      },
 
       createdAt: {
         allowNull: false,

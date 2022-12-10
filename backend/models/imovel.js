@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       endereco: DataTypes.STRING,
       CEP: DataTypes.STRING,
       areaTotal: DataTypes.INTEGER,
+      descricao: DataTypes.STRING,
     },
     {
       sequelize,

@@ -1,5 +1,6 @@
 const db = require("../models/index");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 class user {
   constructor() {
@@ -30,11 +31,11 @@ class user {
       pass: pass,
     });
 
-    if (insertions._options.isNewRecord) {
+    if (!insertions._options.isNewRecord) {
       throw new Error("Error creating user");
     }
 
-    return { messsage: "User created	successfully" };
+    return { messsage: "User created successfully" };
   }
 
   //authenticate user
@@ -52,13 +53,13 @@ class user {
       return res.status(400).json({ error: "Invalid password" });
     }
 
-    token = jwt.sign(
+    let token = jwt.sign(
       {
         email: user.email,
       },
       "4b0d30a9f642b3bfff67d0b5b28371a9",
       {
-        subject: user._id.toString(),
+        subject: user.id.toString(),
         expiresIn: "1h",
       }
     );

@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      enderecoBlockchain: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       duracao: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -18,9 +22,6 @@ module.exports = {
       },
       tipo: {
         allowNull: false,
-        type: Sequelize.STRING,
-      },
-      encargos: {
         type: Sequelize.STRING,
       },
       ultimaFiscalizacao: {

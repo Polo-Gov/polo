@@ -19,10 +19,12 @@ const PORT = process.env.PORT || 3001;
 
 const contratoRouter = require("./router/contratos.js");
 const userRouter = require("./router/user.js");
+const imovelRouter = require("./router/imovel.js");
 //connect to db
 
 app.use("/contrato/", contratoRouter);
 app.use("/user/", userRouter);
+app.use("/imovel/", imovelRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta http://localhost:${PORT}`);

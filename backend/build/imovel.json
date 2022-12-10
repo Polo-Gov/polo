@@ -1,0 +1,325 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "_owners",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_idPredio",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_prazo",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "address[]",
+				"name": "_donos",
+				"type": "address[]"
+			},
+			{
+				"internalType": "bool[]",
+				"name": "_status",
+				"type": "bool[]"
+			},
+			{
+				"internalType": "string[][]",
+				"name": "_condicoes",
+				"type": "string[][]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_valorCobranca",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_dataProxCobranca",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[][]",
+				"name": "_datasRecebimento",
+				"type": "uint256[][]"
+			},
+			{
+				"internalType": "uint256[][]",
+				"name": "_valoresRecebimento",
+				"type": "uint256[][]"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newDono",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_prazo",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_status",
+				"type": "bool"
+			},
+			{
+				"internalType": "string",
+				"name": "_condicoes",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_valorCobranca",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dataProxCobranca",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_datasRecebimento",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_valoresRecebimento",
+				"type": "uint256[]"
+			}
+		],
+		"name": "addDono",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newUnion",
+				"type": "address"
+			}
+		],
+		"name": "addOwnerUnion",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "condicoes",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "dataProxCobranca",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "donos",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "historicoRecebimento",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "data",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "valor",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "idPredio",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "prazo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_dono",
+				"type": "address"
+			}
+		],
+		"name": "removeDono",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_unionMember",
+				"type": "address"
+			}
+		],
+		"name": "removeOwnerUnion",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "status",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "valorCobranca",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

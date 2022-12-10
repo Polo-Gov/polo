@@ -13,16 +13,19 @@ module.exports = (sequelize, DataTypes) => {
   }
   Imovel.init(
     {
-      nome: DataTypes.STRING,
-      endereco: DataTypes.STRING,
-      CEP: DataTypes.STRING,
-      areaTotal: DataTypes.INTEGER,
-      descricao: DataTypes.STRING,
+      cep: DataTypes.STRING,
+      logradouro: DataTypes.STRING,
+      numero: DataTypes.STRING,
+      bairro: DataTypes.STRING,
+      cidade: DataTypes.STRING,
+      estado: DataTypes.STRING,
+      status: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "Imovel",
       tableName: "imoveis",
+      timestamps: false,
     }
   );
   return Imovel;

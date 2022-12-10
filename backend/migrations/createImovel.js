@@ -3,30 +3,38 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("imoveis", {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      nome: {
-        type: Sequelize.STRING,
-      },
-      endereco: {
-        type: Sequelize.STRING,
-      },
-      CEP: {
-        type: Sequelize.STRING,
-      },
-      areaTotal: {
-        type: Sequelize.INTEGER,
-      },
-      descricao: {
-        type: Sequelize.STRING,
-      },
-
-      createdAt: {
+        autoIncrement: true,
         allowNull: false,
-        type: Sequelize.DATE,
+      },
+      cep: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      logradouro: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      numero: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      bairro: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      cidade: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      estado: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
     });
   },

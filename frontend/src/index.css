@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.facha{
+    height: 86px;
+    width: 1280px;
+    position: fixed;
+
+    transform: rotate(-50deg);
+
+    top:432.5px ;
+    left:266.85px ;
+}
+
+.forms{
+    height:608px ;
+}

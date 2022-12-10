@@ -5,6 +5,6 @@
     "database": "main",
     "host": "localhost",
     "dialect": "sqlite",
-    "storage": "teste.db"
+    "storage": "/teste.db"
   }
 }

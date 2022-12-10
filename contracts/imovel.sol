@@ -1,24 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.5;
 
-// import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./functions/status.sol";
+import "./functions/condicoes.sol";
+import "./functions/historicoRecebimento.sol";
 
-contract Imovel {
+contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
     // State variables
-    struct Contas {
-        uint256 data;
-        uint256 valor;
-    }
 
     mapping(address => bool) public owner; // Enderecos permitidos da uniao
     uint256 public idPredio; // Id do imovel no nosso banco de dados
     address[] public donos; // Os dono do imóvel
     uint256[] public prazo; // Prazos contratuais com cada dono
     bool[] public status; // Status da locação do imóvel de cada dono
-    mapping(uint256 => string[]) public condicoes; // As condições para cada dono
     uint256[] public valorCobranca; // Valor a ser cobrado de cada dono
     uint256[] public dataProxCobranca; // Data da prox cobranca de cada dono
-    mapping(uint256 => Contas[]) public historicoRecebimento; // Historico de pagamentos de ônus
 
     // Modifiers
 
@@ -49,7 +45,15 @@ contract Imovel {
         uint256[] memory _dataProxCobranca,
         uint256[][] memory _datasRecebimento,
         uint256[][] memory _valoresRecebimento
-    ) {
+    )
+        Acoes(_donos.length)
+        Condicoes(_donos.length, _condicoes)
+        HistoricoRecebimento(
+            _donos.length,
+            _datasRecebimento,
+            _valoresRecebimento
+        )
+    {
         for (uint256 i = 0; i < _owners.length; i++) {
             owner[_owners[i]] = true;
         }
@@ -58,20 +62,6 @@ contract Imovel {
         prazo = _prazo;
         status = _status;
         for (uint256 i = 0; i < _donos.length; i++) {
-            for (
-                uint256 index = 0;
-                index < _datasRecebimento[i].length;
-                index++
-            ) {
-                historicoRecebimento[i].push(
-                    Contas(
-                        _datasRecebimento[i][index],
-                        _valoresRecebimento[i][index]
-                    )
-                );
-            }
-
-            condicoes[i] = _condicoes[i];
             valorCobranca[i] = _valorCobranca[i];
             dataProxCobranca[i] = _dataProxCobranca[i];
         }
@@ -93,7 +83,7 @@ contract Imovel {
         address _newDono,
         uint256 _prazo,
         bool _status,
-        string memory _condicoes,
+        string[] memory _condicoes,
         uint256 _valorCobranca,
         uint256 _dataProxCobranca,
         uint256[] memory _datasRecebimento,
@@ -104,28 +94,30 @@ contract Imovel {
         donos.push(_newDono);
         prazo.push(_prazo);
         status.push(_status);
-        condicoes[newDonoId] = [_condicoes];
+        Condicoes._addNewDonoCondition(newDonoId, _condicoes);
         valorCobranca[newDonoId] = _valorCobranca;
         dataProxCobranca[newDonoId] = _dataProxCobranca;
-        for (uint256 i = 0; i < _datasRecebimento.length; i++) {
-            historicoRecebimento[newDonoId].push(
-                Contas(_datasRecebimento[i], _valoresRecebimento[i])
-            );
-        }
+        Acoes._addDonoStatus();
+        HistoricoRecebimento._addNewDonoHistoricoRecebimento(
+            newDonoId,
+            _datasRecebimento,
+            _valoresRecebimento
+        );
     }
 
     function removeDono(address _dono) public isUnion {
         for (uint256 i = 0; i < donos.length; i++) {
             if (donos[i] == _dono) {
                 for (uint256 index = i; index < donos.length; index++) {
+                    Acoes._removeStatus(i);
                     donos[index] = donos[index + 1];
                     prazo[index] = prazo[index + 1];
                     status[index] = status[index + 1];
                     valorCobranca[index] = valorCobranca[index + 1];
                     dataProxCobranca[index] = dataProxCobranca[index + 1];
                 }
-                condicoes[i] = [""];
-                delete historicoRecebimento[i];
+                Condicoes._removeDonoCondition(i);
+                delete HistoricoRecebimento.historicoRecebimento[i];
             }
         }
         donos.pop();
@@ -133,5 +125,84 @@ contract Imovel {
         status.pop();
         valorCobranca.pop();
         dataProxCobranca.pop();
+    }
+
+    // Updates functions
+
+    function updateAcoes(address _dono, string memory _acao) public isUnion {
+        uint256 donoId;
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                donoId = i;
+            }
+        }
+        Acoes._addStatus(donoId, _acao);
+    }
+
+    function updatePrazo(address _dono, uint256 _newPrazo) public isUnion {
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                prazo[i] = _newPrazo;
+            }
+        }
+    }
+
+    function updateStatus(address _dono, bool _newStatus) public isUnion {
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                status[i] = _newStatus;
+            }
+        }
+    }
+
+    function updateValorCobranca(address _dono, uint256 _newValorCobranca)
+        public
+        isUnion
+    {
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                valorCobranca[i] = _newValorCobranca;
+            }
+        }
+    }
+
+    function updateDataProxCobranca(address _dono, uint256 _newDataProxCobranca)
+        public
+        isUnion
+    {
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                dataProxCobranca[i] = _newDataProxCobranca;
+            }
+        }
+    }
+
+    function updateCondicoes(address _dono, string memory _condicao)
+        public
+        isUnion
+    {
+        uint256 donoId;
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                donoId = i;
+            }
+        }
+        Condicoes._addNewCondition(donoId, _condicao);
+    }
+
+    function updateHistoricoRecebimento(
+        address _dono,
+        uint256 _dataRecebimento,
+        uint256 _valorRecebimento
+    ) public isUnion {
+        for (uint256 i = 0; i < donos.length; i++) {
+            if (donos[i] == _dono) {
+                HistoricoRecebimento._addNewHistoricoRecebimento(
+                    i,
+                    _dataRecebimento,
+                    _valorRecebimento
+                );
+            }
+        }
     }
 }

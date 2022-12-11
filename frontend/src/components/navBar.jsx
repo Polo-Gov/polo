@@ -9,7 +9,7 @@ const NavBar = () => {
 
                 <div className='flex gap-4'>
                     <NavLink className="text-blueGov" to={"/imóveis"}>imóveis</NavLink>
-                    <NavLink className="text-blueGov" to={"/registrar"}>Registrar imóveis</NavLink>
+                    <NavLink className="text-blueGov" to={"/cadastrarImóveis"}>Registrar imóveis</NavLink>
                     <NavLink className="text-blueGov" to={"/Contratos"}>Contratos</NavLink>
                 </div>
 

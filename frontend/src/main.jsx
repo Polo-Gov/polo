@@ -5,12 +5,18 @@ import NotFound from "./pages/notFound";
 import Login from "./pages/login";
 import BuscarImoveis from "./pages/buscarImoveis";
 import CadastrarImoveis from "./pages/cadastrarImoveis";
+import LoginMeta from "./pages/loginMetamask"
 import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <Login />,
+    errorElement: <NotFound></NotFound>,
+  },
+  {
+    path: "/",
+    element: <LoginMeta />,
     errorElement: <NotFound></NotFound>,
   },
   {

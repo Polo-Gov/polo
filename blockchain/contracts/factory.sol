@@ -7,6 +7,8 @@ contract Factory {
     mapping(address => bool) public owner; // Enderecos permitidos da uniao
     address[] public owners;
 
+    event NewImovel(address imovel);
+
     modifier isUnion() {
         require(owner[msg.sender], "You dont have permission for this action");
         _;
@@ -29,7 +31,7 @@ contract Factory {
         owner[_union] = false;
         for (uint256 i = 0; i < owners.length; i++) {
             if (owners[i] == _union) {
-                for (uint256 index = i; index < owners.length; index++) {
+                for (uint256 index = i; index < owners.length - 1; index++) {
                     owners[index] = owners[index + 1];
                 }
             }
@@ -43,7 +45,7 @@ contract Factory {
         uint256[] memory _prazo,
         address[] memory _donos,
         bool[] memory _status,
-        string[][] memory _condicoes,
+        string[] memory _condicoes,
         uint256[] memory _valorCobranca,
         uint256[] memory _dataProxCobranca,
         uint256[][] memory _datasRecebimento,
@@ -61,6 +63,8 @@ contract Factory {
             _datasRecebimento,
             _valoresRecebimento
         );
+        emit NewImovel(address(novoImovel));
+
         return address(novoImovel);
     }
 }

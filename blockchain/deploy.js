@@ -9,6 +9,7 @@ async function main() {
 
   const factoryContract = await Factory.deploy([
     "0x23511a29ad92D438823454C26812b7A604f5186F",
+    "0xA1e884d61FEA88fC9dd2a7105D6Dd40Db3D911BD",
   ]);
   await factoryContract.deployed();
 

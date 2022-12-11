@@ -1,11 +1,24 @@
 const db = require("../models/index");
+const uploadJSONIPFS = require("../utils/ipfs");
+const factoryInstance = require("../controllers/factory");
+const dotenv = require("dotenv").config();
+const { factoryCreateImovel } = require("../utils/imoveisFunctions");
 
 class imovel {
   constructor() {
     this.imovel = db.imoveis;
   }
 
-  async criarImovel(cep, logradouro, numero, bairro, cidade, estado, status) {
+  async criarImovel(
+    cep,
+    logradouro,
+    numero,
+    bairro,
+    cidade,
+    estado,
+    status,
+    ipfsImage
+  ) {
     try {
       const Imovel = await this.imovel;
       const imovel = await Imovel.create({
@@ -16,6 +29,8 @@ class imovel {
         cidade: cidade,
         estado: estado,
         status: status,
+        enderecoBlockchain: "",
+        linkImagem: ipfsImage,
       });
       return imovel;
     } catch (err) {
@@ -31,11 +46,12 @@ class imovel {
     bairro,
     cidade,
     estado,
-    status
+    status,
+    enderecoBlockchain,
+    linkImagem
   ) {
     try {
       let args = {};
-      args.id = id;
       if (cep) args.cep = cep;
       if (logradouro) args.logradouro = logradouro;
       if (numero) args.numero = numero;
@@ -43,23 +59,14 @@ class imovel {
       if (cidade) args.cidade = cidade;
       if (estado) args.estado = estado;
       if (status) args.status = status;
+      if (enderecoBlockchain) args.enderecoBlockchain = enderecoBlockchain;
+      if (linkImagem) args.linkImagem = linkImagem;
       const Imovel = await this.imovel;
-      const imovel = await Imovel.update(
-        {
-          cep: cep,
-          logradouro: logradouro,
-          numero: numero,
-          bairro: bairro,
-          cidade: cidade,
-          estado: estado,
-          status: status,
+      const imovel = await Imovel.update(args, {
+        where: {
+          id: id,
         },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
+      });
       return imovel;
     } catch (err) {
       throw new Error("erro ao alterar imovel");
@@ -91,6 +98,42 @@ class imovel {
       });
     } catch (error) {
       throw new Error("erro ao deletar imovel");
+    }
+  }
+
+  async criarContratoImovel(
+    idImovel,
+    prazos,
+    donos,
+    status,
+    condicoes,
+    valorCobranca,
+    dataProximaCobranca,
+    dataRecebimento,
+    valoresRecebimento
+  ) {
+    try {
+      let newCondicao = [];
+      for (let i = 0; i < condicoes.length; i++) {
+        await uploadJSONIPFS({ condicao: condicoes[i] }).then((res) => {
+          newCondicao.push(res);
+        });
+      }
+      const address = await factoryCreateImovel(
+        idImovel,
+        prazos,
+        donos,
+        status,
+        newCondicao,
+        valorCobranca,
+        dataProximaCobranca,
+        dataRecebimento,
+        valoresRecebimento
+      );
+      console.log("Fim do service: ", address);
+      return address;
+    } catch (err) {
+      throw new Error(err.message);
     }
   }
 }

@@ -3,17 +3,54 @@ const Imovel = new imovel.imovel();
 
 // //bodyparser
 
-function criarImovel(req, res) {
+const criarImovel = (req, res) => {
   //create imovel
-  const { cep, logradouro, numero, bairro, cidade, estado, status } = req.body;
-  Imovel.criarImovel(cep, logradouro, numero, bairro, cidade, estado, status)
+  const { cep, logradouro, numero, bairro, cidade, estado, status, ipfsImage } =
+    req.body;
+  Imovel.criarImovel(
+    cep,
+    logradouro,
+    numero,
+    bairro,
+    cidade,
+    estado,
+    status,
+    ipfsImage
+  )
     .then((imovel) => {
       res.status(200).send("imovel criado com sucesso");
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
     });
-}
+};
+
+const criarContratoImovel = (req, res) => {
+  const {
+    idImovel,
+    prazos,
+    donos,
+    status,
+    condicoes,
+    valorCobranca,
+    dataProximaCobranca,
+    dataRecebimento,
+    valoresRecebimento,
+  } = req.body;
+  Imovel.criarContratoImovel(
+    idImovel,
+    prazos,
+    donos,
+    status,
+    condicoes,
+    valorCobranca,
+    dataProximaCobranca,
+    dataRecebimento,
+    valoresRecebimento
+  ).then((imovel) => {
+    res.status(200).send(imovel);
+  });
+};
 
 async function alterarImovel(req, res) {
   //update imovel
@@ -65,4 +102,5 @@ module.exports = {
   alterarImovel,
   acharImovel,
   deletarImovel,
+  criarContratoImovel,
 };

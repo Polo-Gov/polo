@@ -40,7 +40,7 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         uint256[] memory _prazo,
         address[] memory _donos,
         bool[] memory _status,
-        string[][] memory _condicoes,
+        string[] memory _condicoes,
         uint256[] memory _valorCobranca,
         uint256[] memory _dataProxCobranca,
         uint256[][] memory _datasRecebimento,
@@ -83,7 +83,7 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         address _newDono,
         uint256 _prazo,
         bool _status,
-        string[] memory _condicoes,
+        string memory _condicoes,
         uint256 _valorCobranca,
         uint256 _dataProxCobranca,
         uint256[] memory _datasRecebimento,
@@ -155,10 +155,10 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         }
     }
 
-    function updateValorCobranca(address _dono, uint256 _newValorCobranca)
-        public
-        isUnion
-    {
+    function updateValorCobranca(
+        address _dono,
+        uint256 _newValorCobranca
+    ) public isUnion {
         for (uint256 i = 0; i < donos.length; i++) {
             if (donos[i] == _dono) {
                 valorCobranca[i] = _newValorCobranca;
@@ -166,10 +166,10 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         }
     }
 
-    function updateDataProxCobranca(address _dono, uint256 _newDataProxCobranca)
-        public
-        isUnion
-    {
+    function updateDataProxCobranca(
+        address _dono,
+        uint256 _newDataProxCobranca
+    ) public isUnion {
         for (uint256 i = 0; i < donos.length; i++) {
             if (donos[i] == _dono) {
                 dataProxCobranca[i] = _newDataProxCobranca;
@@ -177,10 +177,10 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         }
     }
 
-    function updateCondicoes(address _dono, string memory _condicao)
-        public
-        isUnion
-    {
+    function updateCondicoes(
+        address _dono,
+        string memory _condicao
+    ) public isUnion {
         uint256 donoId;
         for (uint256 i = 0; i < donos.length; i++) {
             if (donos[i] == _dono) {

@@ -36,6 +36,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      enderecoBlockchain: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      linkImagem: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

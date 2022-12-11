@@ -201,8 +201,6 @@ async function updateAcoes(id, ownerAddress, acao) {
     );
     const response = await contrato.updateAcoes(ownerAddress, acao);
 
-    console.log("Teste", response);
-
     return response;
   } catch (error) {
     console.log("Erro", error.reason);
@@ -369,6 +367,7 @@ async function updateCondicoes(id, ownerAddress, condicoes) {
 }
 
 async function updateHistoricoRecebimento(id, ownerAddress, hist) {
+  const { dataRecebimento, valorRecebimento } = hist;
   const provider = new CeloProvider("https://alfajores-forno.celo-testnet.org");
   await provider.ready;
 
@@ -380,8 +379,6 @@ async function updateHistoricoRecebimento(id, ownerAddress, hist) {
     },
   });
 
-  console.log(query.dataValues.enderecoBlockchain);
-
   try {
     const contrato = new ethers.Contract(
       query.dataValues.enderecoBlockchain,
@@ -390,10 +387,9 @@ async function updateHistoricoRecebimento(id, ownerAddress, hist) {
     );
     const response = await contrato.updateHistoricoRecebimento(
       ownerAddress,
-      hist
+      dataRecebimento,
+      valorRecebimento
     );
-
-    console.log("Teste", response);
 
     return response;
   } catch (error) {

@@ -48,7 +48,9 @@ const criarContratoImovel = (req, res) => {
     dataRecebimento,
     valoresRecebimento
   ).then((imovel) => {
-    res.status(200).send(imovel);
+    res
+      .status(200)
+      .send({ message: "Imovel criado com sucesso", address: imovel });
   });
 };
 
@@ -79,8 +81,11 @@ async function alterarImovel(req, res) {
     enderecoBlockchain,
     imagem
   )
-    .then((imovel) => {
-      res.status(200).send("imovel alterado com sucesso");
+    .then((response) => {
+      res.status(200).send({
+        message: "Imovel alterado com sucesso",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -101,8 +106,11 @@ async function acharImovel(req, res) {
 async function deletarImovel(req, res) {
   const { id } = req.body;
   Imovel.deletarImovel(id)
-    .then((imovel) => {
-      res.status(200).send("imovel deletado com sucesso");
+    .then((response) => {
+      res.status(200).send({
+        message: "Imovel deletado com sucesso",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -113,7 +121,9 @@ async function addOwnerUnion(req, res) {
   const { id, ownerAddress } = req.body;
   await Imovel.addOwnwer(id, ownerAddress)
     .then((response) => {
-      res.status(200).send("Owner adicionado com sucesso");
+      res
+        .status(200)
+        .send({ message: "Owner criado com sucesso", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -122,8 +132,8 @@ async function addOwnerUnion(req, res) {
 
 async function getOwner(req, res) {
   await Imovel.getOwner()
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((owner) => {
+      res.status(200).send(owner);
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -135,7 +145,9 @@ async function removeOwnerUnion(req, res) {
 
   await Imovel.removeOwner(id, ownerAddress)
     .then((response) => {
-      res.status(200).send("Owner removido com sucesso");
+      res
+        .status(200)
+        .send({ message: "Owner removido com sucesso", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -165,8 +177,11 @@ async function addDono(req, res) {
     datasRecebimento,
     valoresRecebimento
   )
-    .then((imovel) => {
-      res.status(200).send("Novo dono criado com sucesso");
+    .then((response) => {
+      res.status(200).send({
+        message: "Novo dono criado com sucesso",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -176,8 +191,10 @@ async function addDono(req, res) {
 async function removeDono(req, res) {
   const { id, ownerAddress } = req.body;
   await Imovel.removeOwner(id, ownerAddress)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res
+        .status(200)
+        .send({ message: "Dono removido com sucesso", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -186,9 +203,12 @@ async function removeDono(req, res) {
 
 async function updateAcoes(req, res) {
   const { id, ownerAddress, acao } = req.body;
-  await Imovel.removeOwner(id, ownerAddress, acao)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+  await Imovel.updateAcoes(id, ownerAddress, acao)
+    .then((response) => {
+      res.status(200).send({
+        message: "Ação registrada com sucesso",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -198,8 +218,10 @@ async function updateAcoes(req, res) {
 async function updatePrazo(req, res) {
   const { id, ownerAddress, prazo } = req.body;
   await Imovel.updatePrazo(id, ownerAddress, prazo)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res
+        .status(200)
+        .send({ message: "Prazo atualizado", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -209,8 +231,10 @@ async function updatePrazo(req, res) {
 async function updateStatus(req, res) {
   const { id, ownerAddress, status } = req.body;
   await Imovel.updateStatus(id, ownerAddress, status)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res
+        .status(200)
+        .send({ message: "Status alterado", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -220,8 +244,10 @@ async function updateStatus(req, res) {
 async function updateCondicoes(req, res) {
   const { id, ownerAddress, condicoes } = req.body;
   await Imovel.updateCondicoes(id, ownerAddress, condicoes)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res
+        .status(200)
+        .send({ message: "Condicoes adicionada", transaction: response });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -231,8 +257,11 @@ async function updateCondicoes(req, res) {
 async function updateValorCobranca(req, res) {
   const { id, ownerAddress, cobranca } = req.body;
   await Imovel.updateValorCobranca(id, ownerAddress, cobranca)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res.status(200).send({
+        message: "Valor de cobranca atualizado",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -242,8 +271,11 @@ async function updateValorCobranca(req, res) {
 async function updateDataProxCobranca(req, res) {
   const { id, ownerAddress, data } = req.body;
   await Imovel.updateDataProxCobranca(id, ownerAddress, data)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res.status(200).send({
+        message: "Data de cobranca atualizada",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -253,8 +285,11 @@ async function updateDataProxCobranca(req, res) {
 async function updateHistoricoRecebimento(req, res) {
   const { id, ownerAddress, hist } = req.body;
   await Imovel.updateHistoricoRecebimento(id, ownerAddress, hist)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res.status(200).send({
+        message: "Historico atualizado",
+        transaction: response,
+      });
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });

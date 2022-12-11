@@ -226,8 +226,9 @@ class imovel {
 
   async updateAcoes(idImovel, ownerAddress, acao) {
     let response = "";
+    const newAcao = await uploadJSONIPFS({ acao: acao });
 
-    await ImovelFunction.updateAcoes(idImovel, ownerAddress, acao).then(
+    await ImovelFunction.updateAcoes(idImovel, ownerAddress, newAcao).then(
       (res) => {
         response = res;
       }
@@ -262,11 +263,11 @@ class imovel {
 
   async updateCondicoes(idImovel, ownerAddress, condicoes) {
     let response = "";
-
+    const newCondicoes = await uploadJSONIPFS({ condicoes: condicoes });
     await ImovelFunction.updateCondicoes(
       idImovel,
       ownerAddress,
-      condicoes
+      newCondicoes
     ).then((res) => {
       response = res;
     });

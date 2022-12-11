@@ -11,6 +11,7 @@ import DropdownBrazilianCities from "../components/DropdownBrazilianCities";
 import DropdownBrazilianStates from "../components/DropdownBrazilianStates";
 
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function CadastrarImóveis() {
   const [fileImg, setFileImg] = useState(null);
@@ -47,9 +48,8 @@ function CadastrarImóveis() {
           data: formData,
           headers: {
             pinata_api_key: `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
-            pinata_secret_api_key: `${
-              import.meta.env.VITE_APP_PINATA_API_SECRET
-            }`,
+            pinata_secret_api_key: `${import.meta.env.VITE_APP_PINATA_API_SECRET
+              }`,
             "Content-Type": "multipart/form-data",
           },
         });
@@ -66,17 +66,14 @@ function CadastrarImóveis() {
           ipfsImage: ImgHash,
           cep: cep,
           status: status,
+        }).then(() => {
+          let navigate = useNavigate()
+          navigate("/cadastrarContratos")
         });
-        console.log({
-          estado: formValues.estado,
-          cidade: cidade,
-          bairro: bairroI,
-          numero: numeroI,
-          logradouro: logradouro,
-          ipfsImage: ImgHash,
-          cep: cep,
-          status: status,
-        });
+
+
+
+
 
         //Take a look at your Pinata Pinned section, you will see a new file added to you list.
       } catch (error) {
@@ -133,9 +130,8 @@ function CadastrarImóveis() {
       </div>
 
       <h1
-        className={`${
-          visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
-        }`}
+        className={`${visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
+          }`}
       >
         Campo obrigatório não preenchido
       </h1>

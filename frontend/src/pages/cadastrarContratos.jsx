@@ -9,6 +9,7 @@ import cobraca from "../assets/cobranca.png";
 import proximaCobraca from "../assets/proximaCobranca.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const CadastrarContratos = () => {
   const [visibleInfo, setVisibleInfo] = useState(false);
@@ -50,18 +51,10 @@ const CadastrarContratos = () => {
         })
         .then((response) => {
           console.log(response.data);
+          let navigate = useNavigate()
+          navigate("/imóveis")
         });
-      console.log({
-        idImovel: idMovel,
-        prazos: prazos_,
-        donos: donos,
-        status: status_,
-        condicoes: condicoes,
-        valorCobranca: cobranca,
-        dataProximaCobranca: proximaCobraca_,
-        dataRecebimento: recebimento,
-        valoresRecebimento: valoresRecebidos,
-      });
+
     } else {
       setVisibleInfo(true);
 
@@ -75,7 +68,6 @@ const CadastrarContratos = () => {
   async function getImoveis() {
     axios.post("http://localhost:3001/imovel/achar").then((response) => {
       console.log(response.data);
-      postForAplication();
       setImoveis(
         response.data.map((item) => {
           return (
@@ -108,9 +100,8 @@ const CadastrarContratos = () => {
       </div>
 
       <h1
-        className={`${
-          visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
-        }`}
+        className={`${visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
+          }`}
       >
         Campo obrigatório não preenchido
       </h1>

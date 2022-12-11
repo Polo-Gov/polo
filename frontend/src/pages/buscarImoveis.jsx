@@ -1,5 +1,5 @@
 import NavBar from "../components/navBar"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 import DropdownBrazilianStates from "../components/DropdownBrazilianStates";
@@ -8,6 +8,7 @@ import ModalComponent from "../components/ModalComponent"
 import CardImovel from "../components/CardImovel";
 
 import Modal from "react-modal"
+import axios from "axios";
 
 Modal.setAppElement("#root")
 
@@ -18,8 +19,11 @@ const buscarImoveis = () => {
     const [formValues, setFormValues] = useState({})
     const [cidade, setCidade] = useState("")
     const [modalIsOpen, setIsOpen] = useState(false)
+    const [status,setStatus] = useState("")
 
     const [idMovel, setIdMovel] = useState('')
+
+    const [imovel, setImovel] = useState([])
 
 
 
@@ -47,10 +51,35 @@ const buscarImoveis = () => {
         setIsOpen(false)
     }
 
+    const filter = () => {
+        if(formValues.estado || cidade || status){
+            axios.post("http://localhost:3001/imovel/achar",{
+                cidade:cidade,
+                estado:formValues.estado,
+                status:status
+            }).then((res)=>{
+
+                // colocar dentro de um estado , retorna um array
+                console.log(res)
+            })
+        }
+    }
+
+    const getImovel = () => {
+        axios.get().then((result)=>{
+            setImovel(result.data)
+        })
+    }
+
 
     // console.log(idMovel)
     // console.log("Estado:" + formValues.estado)
     // console.log("Cidade:" + cidade)
+
+
+    useEffect(()=>{
+        // getImovel()
+    })
 
     return (
         <div className={`${modalIsOpen ? "blur-sm" : "blur-none"}`}>
@@ -66,19 +95,20 @@ const buscarImoveis = () => {
 
                 <DropdownBrazilianCities state_={formValues.estado} onChange={handleInputChangeCities}></DropdownBrazilianCities>
                 
-                <select className="border-2 border-gray-400 rounded-lg w-52 text-center" name="Status">
+                <select className="border-2 border-gray-400 rounded-lg w-52 text-center" name="Status" onChange={(e)=>{setStatus(e.target.value)}}>
                     <option value="">Status</option>
                 </select>
 
                 <div>
-                    <button className="bg-blueGov text-white w-40 rounded-md" onClick={()=>{"Função de filtrar"}}>Aplicar</button>
+                    <button className="bg-blueGov text-white w-40 rounded-md" onClick={filter}>Aplicar</button>
                 </div>
             </div>
 
 
 
+            
             <div className="flex justify-center">
-                <CardImovel onClick={openModal}></CardImovel>
+                <CardImovel onClick={openModal} data={imovel}></CardImovel>
             </div>
 
 
@@ -89,7 +119,7 @@ const buscarImoveis = () => {
                 overlayClassName="modal-overlay"
                 className="absolute inset-24 border-2 border-gray-500 overflow-auto rounded-lg outline-none p-5 bg-white sm:w-80 sm:left-14"
             >
-                <ModalComponent onClick={closeModal} />
+                <ModalComponent onClick={closeModal} idMovel={idMovel} />
             </Modal>
 
 

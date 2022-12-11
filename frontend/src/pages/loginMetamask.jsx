@@ -95,10 +95,10 @@ const LoginMeta = () => {
             </div>
 
 
-            <div className="mt-10">
+            <div className="mt-20">
               <button onClick={connectWallet} className="mb-8">
                 <div className="flex flex-row bg-[#f5841f] text-white rounded-md">
-                  <p className="p-2">Connect to Metamask</p>
+                  <p className="p-2">Conecte a sua metamask</p>
                 </div>
               </button>
             </div>

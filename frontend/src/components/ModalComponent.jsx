@@ -5,7 +5,7 @@ import X from "../assets/X.png"
 const Modal = ({ idMovel,onClick }) => {
     return (
         <div className="relative">
-            <div className="bg-blueGov h-6 "></div>
+            
 
             <div className="flex justify-end mt-5 mr-5">
                 <button onClick={onClick}><img src={X} alt="" /></button>

@@ -64,18 +64,18 @@ const LoginMeta = () => {
 
       <div className="bg-orangeGov facha"></div>
 
-      <div className="grid grid-cols-2 relative">
+      <div className="grid lg:grid-cols-2 relative sm:grid-cols-1">
 
         {/*Left side */}
         <div>
-          <div className="flex justify-center items-center mt-40 ml-10">
+          <div className="lg:flex lg:justify-center lg:items-center  lg:mt-10 lg:ml-10 sm:mt-10 sm:flex-col sm:items-center ">
             <div>
               <img src={person} alt="" />
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col sm:items-center  ">
               <img className="w-72 " src={GovLogo} alt="" />
-              <h1 className="font-sans font-normal text-lg w-80 mt-8">Garantindo a <span className="font-bold">sua identificação</span> nos serviços digitais do governo</h1>
+              <h1 className="font-sans font-normal text-lg w-80 mt-8 sm:ml-10">Garantindo a <span className="font-bold">sua identificação</span> nos serviços digitais do governo</h1>
             </div>
 
           </div>
@@ -84,7 +84,7 @@ const LoginMeta = () => {
         </div>
 
         {/*Right side */}
-        <div className=" flex justify-center items-center mt-40 ml-10">
+        <div className=" flex justify-center items-center lg:mt-40 lg:ml-10 sm:mt-10 sm:p-5">
 
           <div className="bg-white shadow-md shadow-black w-96 p-5 text-center forms">
 
@@ -95,10 +95,10 @@ const LoginMeta = () => {
             </div>
 
 
-            <div className="mt-10">
-              <button onClick={connectWallet} className="mb-8">
-                <div className="flex flex-row bg-[#f5841f] text-white rounded-md">
-                  <p className="p-2">Connect to Metamask</p>
+            <div className="mt-20">
+              <button onClick={connectWallet} className="mb-8 ">
+                <div className="flex flex-row bg-[#f5841f] text-white rounded-md sm:h-20 items-center">
+                  <p className="p-2">Conecte a sua metamask</p>
                 </div>
               </button>
             </div>

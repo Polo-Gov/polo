@@ -7,6 +7,8 @@ import BuscarImoveis from "./pages/buscarImoveis";
 import CadastrarImoveis from "./pages/cadastrarImoveis";
 import LoginMeta from "./pages/loginMetamask"
 import "./index.css";
+import EditarContrato from "./pages/editarContrato";
+import CadastrarContratos from "./pages/CadastrarContratos";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,16 @@ const router = createBrowserRouter([
     element: <CadastrarImoveis />,
     errorElement: <NotFound></NotFound>,
   },
+  {
+    path:"/cadastrarContratos",
+    element:<CadastrarContratos/>,
+    errorElement: <NotFound></NotFound>
+  },
+  {
+    path:"/editarContrato/:id",
+    element:<EditarContrato/>,
+    errorElement: <NotFound></NotFound>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

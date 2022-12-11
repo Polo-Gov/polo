@@ -61,7 +61,7 @@ const buscarImoveis = () => {
                 <h1 className="text-3xl font-normal font-sans">Busca de imóvel</h1>
             </div>
 
-            <div className="flex justify-center gap-5 mt-10 mb-10">
+            <div className="flex justify-center gap-5 mt-10 mb-10 sm:flex-col items-center">
                 <DropdownBrazilianStates onChange={handleInputChange}></DropdownBrazilianStates>
 
                 <DropdownBrazilianCities state_={formValues.estado} onChange={handleInputChangeCities}></DropdownBrazilianCities>
@@ -87,7 +87,7 @@ const buscarImoveis = () => {
                 onRequestClose={closeModal}
                 contentLabel="Example modal"
                 overlayClassName="modal-overlay"
-                className="absolute inset-24 border-2 border-gray-500 overflow-auto rounded-lg outline-none p-5 bg-white"
+                className="absolute inset-24 border-2 border-gray-500 overflow-auto rounded-lg outline-none p-5 bg-white sm:w-80 sm:left-14"
             >
                 <ModalComponent onClick={closeModal} />
             </Modal>

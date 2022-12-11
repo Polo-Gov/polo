@@ -1,4 +1,5 @@
 //router contratos
+// Não vamos usar
 const express = require("express");
 const router = express.Router();
 const contratoController = require("../controllers/contrato.js");

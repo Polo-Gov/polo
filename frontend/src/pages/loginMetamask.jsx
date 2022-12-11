@@ -109,7 +109,8 @@ const LoginMeta = () => {
               <img src={alert} alt="" />
               <a className="text-blueGov" target="_blank" href="https://www.gov.br/governodigital/pt-br/conta-gov-br">Entenda a conta gov.br</a>
             </div>
-
+          <p className="mt-10 text-gray-500">para fins de desenvolvimento da plataforma, você pode acessar a página principal diretamente pelo botão abaixo:</p>
+          <button className={"bg-blueGov p-1 mt-2 pl-3 pr-3 rounded-lg text-white"}onClick={()=>{navigate("/imóveis")}}>entrar</button>
           </div>
 
         </div>

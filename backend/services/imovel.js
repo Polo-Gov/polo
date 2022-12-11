@@ -76,15 +76,33 @@ class imovel {
 
   async acharImovel(cidade, estado, estatus) {
     let args = {};
-    if (cidade) args.cidade = cidade;
-    if (estado) args.estado = estado;
-    if (estatus) args.status = estatus;
+    // if (cidade) args.cidade = cidade;
+    // if (estado) args.estado = estado;
+    // if (estatus) args.status = estatus;
     try {
-      const Imovel = await this.imovel;
-      const imovel = await Imovel.findAll({
-        where: args,
-      });
-      return imovel;
+      let imoveis = [];
+      if (cidade) {
+        const Imovel = await this.imovel;
+        const imovel = await Imovel.findAll({
+          where: { cidade: cidade },
+        });
+        imoveis = [...imoveis, ...imovel];
+      }
+      if (estado) {
+        const Imovel = await this.imovel;
+        const imovel = await Imovel.findAll({
+          where: { estado: estado },
+        });
+        imoveis = [...imoveis, ...imovel];
+      }
+      if (estatus) {
+        const Imovel = await this.imovel;
+        const imovel = await Imovel.findAll({
+          where: { status: estatus },
+        });
+        imoveis = [...imoveis, ...imovel];
+      }
+      return imoveis;
     } catch (err) {
       throw new Error("erro ao achar imovel");
     }
@@ -171,7 +189,7 @@ class imovel {
 
   async removeOwner(idImovel, ownerAddress) {
     let response = "";
-    
+
     await ImovelFunction.removeOwnerUnion(idImovel, ownerAddress).then(
       (res) => {
         response = res;

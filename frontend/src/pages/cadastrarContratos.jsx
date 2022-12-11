@@ -45,6 +45,8 @@ const CadastrarContratos = () => {
         } else {
             setVisibleInfo(true)
 
+            window.scrollTo(0, 100)
+
             setTimeout(() => {
                 setVisibleInfo(false)
             }, 5000)
@@ -66,7 +68,7 @@ const CadastrarContratos = () => {
 
             <h1 className={`${visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"}`}>Campo obrigatório não preenchido</h1>
 
-            <div className="flex justify-center gap-24 mt-8">
+            <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
 
                 <div>
                     <div className="flex items-center mb-3">
@@ -101,7 +103,7 @@ const CadastrarContratos = () => {
 
             </div>
 
-            <div className="flex justify-center gap-24 mt-8">
+            <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
 
                 <div>
                     <div className="flex items-center mb-3">
@@ -131,7 +133,7 @@ const CadastrarContratos = () => {
 
             </div>
 
-            <div className="flex justify-center gap-24 mt-8">
+            <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
 
                 <div>
                     <div className="flex items-center mb-3">

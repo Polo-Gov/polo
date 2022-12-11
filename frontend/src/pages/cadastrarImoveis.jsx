@@ -74,6 +74,8 @@ function CadastrarImóveis() {
     }else{
       setVisibleInfo(true)
 
+      window.scrollTo(0, 100)
+
       setTimeout(()=>{
         setVisibleInfo(false)
       },5000)
@@ -115,7 +117,7 @@ function CadastrarImóveis() {
 
 
 
-      <div className="flex justify-center gap-24 mt-8">
+      <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
         <div>
           <div className="flex items-center mb-3">
             <img src={cityscape} alt="" />
@@ -133,7 +135,7 @@ function CadastrarImóveis() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-24 mt-8">
+      <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
 
         <div>
           <div className="flex items-center mb-3">
@@ -154,7 +156,7 @@ function CadastrarImóveis() {
       </div>
 
 
-      <div className="flex justify-center gap-24 mt-8">
+      <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
         <div>
           <div className="flex items-center mb-3 justify-center">
             <h1 className="ml-3 text-lg">Logradouro <span className="text-red-500">*</span></h1>
@@ -170,7 +172,7 @@ function CadastrarImóveis() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-24 mt-8">
+      <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
         <div>
           <div className="flex items-center mb-3 justify-center">
             <h1 className="ml-3 text-lg">Status do imóvel <span className="text-red-500">*</span></h1>

@@ -2,12 +2,12 @@ const express = require("express");
 const imovelController = require("../controllers/imovel");
 const router = express.Router();
 
-router.post("/criar", imovelController.criarImovel);
-router.post("/alterar", imovelController.alterarImovel);
+router.post("/criar", imovelController.criarImovel); //Checado
+router.post("/alterar", imovelController.alterarImovel); // Checado
 router.post("/achar", imovelController.acharImovel);
 router.delete("/deletar", imovelController.deletarImovel);
 router.post("/enderecoBlock", imovelController.criarContratoImovel);
-router.post("/addOwner", imovelController.addOwnerUnion);
+router.post("/addOwner", imovelController.addOwnerUnion); // Checado
 
 router.get("/getOwner", imovelController.getOwner);
 

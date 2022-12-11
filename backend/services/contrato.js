@@ -44,7 +44,6 @@ class contrato {
     let Contrato = await this.db;
     await Contrato.update(
       {
-        imovelId: imovelId,
         duracao: duracao,
         tipo: tipo,
         enderecoBlockchain: enderecoBlockchain,

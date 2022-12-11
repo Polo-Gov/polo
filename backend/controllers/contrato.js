@@ -39,7 +39,6 @@ async function alterarContrato(req, res) {
 
   const {
     id,
-    imovelId,
     duracao,
     tipo,
     enderecoBlockchain,
@@ -51,7 +50,6 @@ async function alterarContrato(req, res) {
   } = req.body;
   Contrato.alterarContrato(
     id,
-    imovelId,
     duracao,
     tipo,
     enderecoBlockchain,

@@ -40,7 +40,6 @@ const EditarContrato = () => {
       return <div className="text-center mt-16 text-blueGov font-bold text-3xl">Carregando...</div>;
     }
   return (
-  
     <div className="text-center content-center">
       <NavBar></NavBar>
       <div className="p-5 absolute">
@@ -125,12 +124,28 @@ const EditarContrato = () => {
             className=" rounded-lg border-slate-500 pl-2 pr-2 border-2"
           ></input>
         </div>
+          <h1 className="text-gray-700 text-xs mb-3">
+            A edição de um contrato notificará, caso aplicável, todas as partes
+            envolvidas. A alteração imprópria do contrato pode acarretar em
+            implicações jurídicas.
+          </h1>
+    
+        <button
+          onClick={sendEditedContract}
+          className="p-2 text-blue-800 border-blueGov border-2 text-white rounded-lg mb-10 font-medium"
+        >
+          Voltar a página de imóveis
+        </button>
+        <button
+          onClick={() => {
+            navigate("/imóveis");
+          }}
+          className="p-3 ml-4 bg-blueGov text-white rounded-lg mb-10 font-bold"
+        >
+          Salvar alterações
+        </button>
       </div>
-      <button onClick={sendEditedContract} className="p-3 bg-blueGov text-white rounded-lg mb-10 font-bold">
-        Salvar alterações
-      </button>
     </div>
-  
   );
 };
 export default EditarContrato;

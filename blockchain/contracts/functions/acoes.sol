@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.5;
+pragma solidity ^0.8.15;
 
 contract Acoes {
     uint256[] public acoesCount;

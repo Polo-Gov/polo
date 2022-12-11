@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.5;
+pragma solidity ^0.8.15;
 
 contract Condicoes {
     mapping(uint256 => string[]) public condicoes; // As condições para cada dono

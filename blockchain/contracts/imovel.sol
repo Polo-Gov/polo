@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.5;
+pragma solidity ^0.8.15;
 
-import "./functions/status.sol";
+import "./functions/acoes.sol";
 import "./functions/condicoes.sol";
 import "./functions/historicoRecebimento.sol";
 
@@ -62,8 +62,8 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         prazo = _prazo;
         status = _status;
         for (uint256 i = 0; i < _donos.length; i++) {
-            valorCobranca[i] = _valorCobranca[i];
-            dataProxCobranca[i] = _dataProxCobranca[i];
+            valorCobranca.push(_valorCobranca[i]);
+            dataProxCobranca.push(_dataProxCobranca[i]);
         }
     }
 

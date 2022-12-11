@@ -6,10 +6,10 @@ router.post("/criar", imovelController.criarImovel); //Checado
 router.post("/alterar", imovelController.alterarImovel); // Checado
 router.post("/achar", imovelController.acharImovel); // Checado
 router.delete("/deletar", imovelController.deletarImovel); // Checado
-router.post("/enderecoBlock", imovelController.criarContratoImovel);
+router.post("/enderecoBlock", imovelController.criarContratoImovel); // Checado
 router.post("/addOwner", imovelController.addOwnerUnion); // Checado
 
-router.get("/getOwner", imovelController.getOwner);
+router.get("/getOwner", imovelController.getOwner); // Checado
 
 router.delete("/removeOwner", imovelController.removeOwnerUnion);
 router.post("/addDono", imovelController.addDono);

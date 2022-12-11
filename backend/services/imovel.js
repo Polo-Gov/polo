@@ -3,7 +3,7 @@ const uploadJSONIPFS = require("../utils/ipfs");
 const factoryInstance = require("../controllers/factory");
 const dotenv = require("dotenv").config();
 const { factoryCreateImovel } = require("../utils/imoveisFunctions");
-const { addOwnerUnion } = require("../utils/contractsFunctions");
+const ImovelFunction = require("../utils/contractsFunctions");
 
 class imovel {
   constructor() {
@@ -153,12 +153,135 @@ class imovel {
 
     let response = ""
 
-    await addOwnerUnion(idImovel, ownerAddress).then((res) => {
+    await ImovelFunction.addOwnerUnion(idImovel, ownerAddress).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async getOwner(){
+
+    let response = ""
+
+    await ImovelFunction.owner(1).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async removeOwner(idImovel, ownerAddress) {
+
+    let response = ""
+
+    await ImovelFunction.removeOwnerUnion(idImovel, ownerAddress).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async addDono(idImovel, ownerAddress, prazo, status, condicoes, valorCobranca, dataProxCobranca, datasRecebimento, valoresRecebimento) {
+
+    let response = ""
+
+    await ImovelFunction.addDono(idImovel, ownerAddress, prazo, status, condicoes, valorCobranca, dataProxCobranca, datasRecebimento, valoresRecebimento).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async removeDono(idImovel, ownerAddress) {
+
+    let response = ""
+
+    await ImovelFunction.removeDono(idImovel, ownerAddress).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateAcoes(idImovel, ownerAddress, acao) {
+
+    let response = ""
+
+    await ImovelFunction.updateAcoes(idImovel, ownerAddress, acao).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+  
+  async updatePrazo(idImovel, ownerAddress, prazo) {
+
+    let response = ""
+
+    await ImovelFunction.updatePrazo(idImovel, ownerAddress, prazo).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateStatus(idImovel, ownerAddress, status) {
+
+    let response = ""
+
+    await ImovelFunction.updateStatus(idImovel, ownerAddress, status).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateCondicoes(idImovel, ownerAddress, condicoes) {
+
+    let response = ""
+
+    await ImovelFunction.updateCondicoes(idImovel, ownerAddress, condicoes).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateValorCobranca(idImovel, ownerAddress, cobranca) {
+
+    let response = ""
+
+    await ImovelFunction.updateValorCobranca(idImovel, ownerAddress, cobranca).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateDataProxCobranca(idImovel, ownerAddress, data) {
+
+    let response = ""
+
+    await ImovelFunction.updateDataProxCobranca(idImovel, ownerAddress, data).then((res) => {
+      response = res
+    });
+
+    return response
+  }
+
+  async updateHistoricoRecebimento(idImovel, ownerAddress, hist) {
+
+    let response = ""
+
+    await ImovelFunction.updateHistoricoRecebimento(idImovel, ownerAddress, hist).then((res) => {
       response = res
     });
 
     return response
   }
 }
+
+
 
 module.exports = { imovel };

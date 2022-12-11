@@ -9,4 +9,20 @@ router.delete("/deletar", imovelController.deletarImovel);
 router.post("/enderecoBlock", imovelController.criarContratoImovel);
 router.post("/addOwner", imovelController.addOwnerUnion);
 
+router.get("/getOwner", imovelController.getOwner);
+
+router.delete("/removeOwner", imovelController.removeOwnerUnion);
+router.post("/addDono", imovelController.addDono);
+router.post("/removeDono", imovelController.addDono);
+router.put("/updateAcoes", imovelController.updateAcoes);
+router.put("/updatePrazo", imovelController.updatePrazo);
+router.put("/updateStatus", imovelController.updateStatus);
+router.put("/updateCondicoes", imovelController.updateCondicoes);
+router.put("/updateValorCobranca", imovelController.updateValorCobranca);
+router.put("/updateDataProxCobranca", imovelController.updateDataProxCobranca);
+router.put(
+  "/updateHistoricoRecebimento",
+  imovelController.updateHistoricoRecebimento
+);
+
 module.exports = router;

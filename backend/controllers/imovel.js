@@ -101,7 +101,158 @@ async function addOwnerUnion(req, res) {
   const { id, ownerAddress } = req.body;
   await Imovel.addOwnwer(id, ownerAddress)
     .then((imovel) => {
-      console.log("Teste",imovel);
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function getOwner(req, res) {
+  await Imovel.getOwner()
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function removeOwnerUnion(req, res) {
+  const { id, ownerAddress } = req.body;
+  await Imovel.removeOwner(id, ownerAddress)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function addDono(req, res) {
+  const {
+    id,
+    ownerAddress,
+    prazo,
+    status,
+    condicoes,
+    valorCobranca,
+    dataProxCobranca,
+    datasRecebimento,
+    valoresRecebimento,
+  } = req.body;
+  await Imovel.removeOwner(
+    id,
+    ownerAddress,
+    prazo,
+    status,
+    condicoes,
+    valorCobranca,
+    dataProxCobranca,
+    datasRecebimento,
+    valoresRecebimento
+  )
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function removeDono(req, res) {
+  const { id, ownerAddress } = req.body;
+  await Imovel.removeOwner(id, ownerAddress)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateAcoes(req, res) {
+  const { id, ownerAddress, acao } = req.body;
+  await Imovel.removeOwner(id, ownerAddress, acao)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updatePrazo(req, res) {
+  const { id, ownerAddress, prazo } = req.body;
+  await Imovel.updatePrazo(id, ownerAddress, prazo)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateStatus(req, res) {
+  const { id, ownerAddress, status } = req.body;
+  await Imovel.updateStatus(id, ownerAddress, status)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateCondicoes(req, res) {
+  const { id, ownerAddress, condicoes } = req.body;
+  await Imovel.updateCondicoes(id, ownerAddress, condicoes)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateValorCobranca(req, res) {
+  const { id, ownerAddress, cobranca } = req.body;
+  await Imovel.updateValorCobranca(id, ownerAddress, cobranca)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateDataProxCobranca(req, res) {
+  const { id, ownerAddress, data } = req.body;
+  await Imovel.updateDataProxCobranca(id, ownerAddress, data)
+    .then((imovel) => {
+      console.log("Teste", imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
+async function updateHistoricoRecebimento(req, res) {
+  const { id, ownerAddress, hist } = req.body;
+  await Imovel.updateHistoricoRecebimento(id, ownerAddress, hist)
+    .then((imovel) => {
+      console.log("Teste", imovel);
       res.status(200).send(imovel);
     })
     .catch((err) => {
@@ -116,4 +267,15 @@ module.exports = {
   deletarImovel,
   criarContratoImovel,
   addOwnerUnion,
+  removeOwnerUnion,
+  addDono,
+  removeDono,
+  updateAcoes,
+  updatePrazo,
+  updateStatus,
+  updateCondicoes,
+  updateValorCobranca,
+  updateDataProxCobranca,
+  updateHistoricoRecebimento,
+  getOwner,
 };

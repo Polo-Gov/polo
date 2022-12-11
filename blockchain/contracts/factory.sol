@@ -15,8 +15,9 @@ contract Factory {
     }
 
     constructor(address[] memory _owners) {
-        owners = _owners;
+        // owners = _owners;
         for (uint256 i = 0; i < _owners.length; i++) {
+            owners.push(_owners[i]);
             owner[_owners[i]] = true;
         }
     }

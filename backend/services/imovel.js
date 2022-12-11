@@ -76,33 +76,15 @@ class imovel {
 
   async acharImovel(cidade, estado, estatus) {
     let args = {};
-    // if (cidade) args.cidade = cidade;
-    // if (estado) args.estado = estado;
-    // if (estatus) args.status = estatus;
+    if (cidade) args.cidade = cidade;
+    if (estado) args.estado = estado;
+    if (estatus) args.status = estatus;
     try {
-      let imoveis = [];
-      if (cidade) {
-        const Imovel = await this.imovel;
-        const imovel = await Imovel.findAll({
-          where: { cidade: cidade },
-        });
-        imoveis = [...imoveis, ...imovel];
-      }
-      if (estado) {
-        const Imovel = await this.imovel;
-        const imovel = await Imovel.findAll({
-          where: { estado: estado },
-        });
-        imoveis = [...imoveis, ...imovel];
-      }
-      if (estatus) {
-        const Imovel = await this.imovel;
-        const imovel = await Imovel.findAll({
-          where: { status: estatus },
-        });
-        imoveis = [...imoveis, ...imovel];
-      }
-      return imoveis;
+      const Imovel = await this.imovel;
+      const imovel = await Imovel.findAll({
+        where: args,
+      });
+      return imovel;
     } catch (err) {
       throw new Error("erro ao achar imovel");
     }

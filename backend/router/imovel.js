@@ -5,7 +5,7 @@ const router = express.Router();
 router.post("/criar", imovelController.criarImovel); //Checado
 router.post("/alterar", imovelController.alterarImovel); // Checado
 router.post("/achar", imovelController.acharImovel); // Checado
-router.delete("/deletar", imovelController.deletarImovel);
+router.delete("/deletar", imovelController.deletarImovel); // Checado
 router.post("/enderecoBlock", imovelController.criarContratoImovel);
 router.post("/addOwner", imovelController.addOwnerUnion); // Checado
 

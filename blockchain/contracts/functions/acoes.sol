@@ -16,10 +16,10 @@ contract Acoes {
         return true;
     }
 
-    function _addStatus(uint256 _idDono, string memory _status)
-        internal
-        returns (bool)
-    {
+    function _addStatus(
+        uint256 _idDono,
+        string memory _status
+    ) internal returns (bool) {
         uint256 idToAdded = acoesCount[_idDono] + 1;
         idAcoes[_idDono][idToAdded] = _status;
         acoesCount[_idDono] = idToAdded;
@@ -30,7 +30,7 @@ contract Acoes {
         for (uint256 i = 0; i <= acoesCount[_idDono]; i++) {
             delete idAcoes[_idDono][i];
         }
-        for (uint256 i = _idDono; i < acoesCount.length; i++) {
+        for (uint256 i = _idDono; i < acoesCount.length - 1; i++) {
             acoesCount[i] = acoesCount[i + 1];
         }
         acoesCount.pop();

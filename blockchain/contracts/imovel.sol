@@ -108,7 +108,7 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
     function removeDono(address _dono) public isUnion {
         for (uint256 i = 0; i < donos.length; i++) {
             if (donos[i] == _dono) {
-                for (uint256 index = i; index < donos.length; index++) {
+                for (uint256 index = i; index < donos.length - 1; index++) {
                     Acoes._removeStatus(i);
                     donos[index] = donos[index + 1];
                     prazo[index] = prazo[index + 1];

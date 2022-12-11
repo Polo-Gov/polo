@@ -97,10 +97,23 @@ async function deletarImovel(req, res) {
     });
 }
 
+async function addOwnerUnion(req, res) {
+  const { id, ownerAddress } = req.body;
+  await Imovel.addOwnwer(id, ownerAddress)
+    .then((imovel) => {
+      console.log("Teste",imovel);
+      res.status(200).send(imovel);
+    })
+    .catch((err) => {
+      res.status(400).send({ error: err.message });
+    });
+}
+
 module.exports = {
   criarImovel,
   alterarImovel,
   acharImovel,
   deletarImovel,
   criarContratoImovel,
+  addOwnerUnion,
 };

@@ -3,6 +3,7 @@ const uploadJSONIPFS = require("../utils/ipfs");
 const factoryInstance = require("../controllers/factory");
 const dotenv = require("dotenv").config();
 const { factoryCreateImovel } = require("../utils/imoveisFunctions");
+const { addOwnerUnion } = require("../utils/contractsFunctions");
 
 class imovel {
   constructor() {
@@ -130,11 +131,33 @@ class imovel {
         dataRecebimento,
         valoresRecebimento
       );
-      console.log("Fim do service: ", address);
-      return address;
+      this.alterarImovel(
+        idImovel,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        address,
+        null
+      );
+      return "Contrato criado com sucesso";
     } catch (err) {
       throw new Error(err.message);
     }
+  }
+
+  async addOwnwer(idImovel, ownerAddress) {
+
+    let response = ""
+
+    await addOwnerUnion(idImovel, ownerAddress).then((res) => {
+      response = res
+    });
+
+    return response
   }
 }
 

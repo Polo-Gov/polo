@@ -7,5 +7,6 @@ router.post("/alterar", imovelController.alterarImovel);
 router.post("/achar", imovelController.acharImovel);
 router.delete("/deletar", imovelController.deletarImovel);
 router.post("/enderecoBlock", imovelController.criarContratoImovel);
+router.post("/addOwner", imovelController.addOwnerUnion);
 
 module.exports = router;

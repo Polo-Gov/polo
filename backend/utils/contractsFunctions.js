@@ -31,8 +31,6 @@ async function addOwnerUnion(id, ownerAddress) {
     );
     const response = await contrato.addOwnerUnion(ownerAddress);
 
-    console.log("Teste", response);
-
     return response;
   } catch (error) {
     console.log("Erro", error.reason);
@@ -75,7 +73,7 @@ async function removeOwnerUnion(id, ownerAddress) {
   await provider.ready;
 
   const wallet = new CeloWallet(dotenv.parsed.PRIVATE_KEY, provider);
-  
+
   const query = await imoveis.imoveis.findOne({
     where: {
       id: id,
@@ -88,7 +86,7 @@ async function removeOwnerUnion(id, ownerAddress) {
       storage.abi,
       wallet
     );
-    console.log(ownerAddress)
+    console.log(ownerAddress);
     const response = await contrato.removeOwnerUnion(ownerAddress);
 
     console.log("Teste", response);
@@ -102,7 +100,7 @@ async function removeOwnerUnion(id, ownerAddress) {
 
 async function addDono(
   id,
-  ownerAddress,
+  donoAddress,
   prazo,
   status,
   condicoes,
@@ -122,16 +120,16 @@ async function addDono(
     },
   });
 
-  console.log(query.dataValues.enderecoBlockchain);
-
   try {
     const contrato = new ethers.Contract(
       query.dataValues.enderecoBlockchain,
       storage.abi,
       wallet
     );
-    const response = await contrato.removeOwnerUnion(
-      ownerAddress,
+    console.log("datasRecebimento: ", datasRecebimento);
+    console.log("valoresRecebimento: ", valoresRecebimento);
+    const response = await contrato.addDono(
+      donoAddress,
       prazo,
       status,
       condicoes,

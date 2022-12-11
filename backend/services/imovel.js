@@ -183,7 +183,7 @@ class imovel {
 
   async addDono(
     idImovel,
-    ownerAddress,
+    donoAddress,
     prazo,
     status,
     condicoes,
@@ -194,12 +194,15 @@ class imovel {
   ) {
     let response = "";
 
+    const newCondicoes = await uploadJSONIPFS({ condicao: condicoes });
+    console.log(newCondicoes);
+
     await ImovelFunction.addDono(
       idImovel,
-      ownerAddress,
+      donoAddress,
       prazo,
       status,
-      condicoes,
+      newCondicoes,
       valorCobranca,
       dataProxCobranca,
       datasRecebimento,

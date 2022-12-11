@@ -134,8 +134,8 @@ async function removeOwnerUnion(req, res) {
   const { id, ownerAddress } = req.body;
 
   await Imovel.removeOwner(id, ownerAddress)
-    .then((imovel) => {
-      res.status(200).send(imovel);
+    .then((response) => {
+      res.status(200).send("Owner removido com sucesso");
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });
@@ -145,7 +145,7 @@ async function removeOwnerUnion(req, res) {
 async function addDono(req, res) {
   const {
     id,
-    ownerAddress,
+    donoAddress,
     prazo,
     status,
     condicoes,
@@ -154,9 +154,9 @@ async function addDono(req, res) {
     datasRecebimento,
     valoresRecebimento,
   } = req.body;
-  await Imovel.removeOwner(
+  await Imovel.addDono(
     id,
-    ownerAddress,
+    donoAddress,
     prazo,
     status,
     condicoes,

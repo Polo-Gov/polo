@@ -127,6 +127,10 @@ contract Imovel is Acoes, Condicoes, HistoricoRecebimento {
         dataProxCobranca.pop();
     }
 
+    function getAllDonos() public view returns (address[] memory) {
+        return donos;
+    }
+
     // Updates functions
 
     function updateAcoes(address _dono, string memory _acao) public isUnion {

@@ -12,8 +12,8 @@ router.post("/addOwner", imovelController.addOwnerUnion); // Checado
 router.get("/getOwner", imovelController.getOwner); // Checado
 
 router.delete("/removeOwner", imovelController.removeOwnerUnion); // Checado
-router.post("/addDono", imovelController.addDono);
-router.post("/removeDono", imovelController.addDono);
+router.post("/addDono", imovelController.addDono); // Checado
+router.post("/removeDono", imovelController.removeDono);
 router.put("/updateAcoes", imovelController.updateAcoes);
 router.put("/updatePrazo", imovelController.updatePrazo);
 router.put("/updateStatus", imovelController.updateStatus);

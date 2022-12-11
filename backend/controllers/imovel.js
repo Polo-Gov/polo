@@ -166,7 +166,7 @@ async function addDono(req, res) {
     valoresRecebimento
   )
     .then((imovel) => {
-      res.status(200).send(imovel);
+      res.status(200).send("Novo dono criado com sucesso");
     })
     .catch((err) => {
       res.status(400).send({ error: err.message });

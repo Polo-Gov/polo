@@ -75,7 +75,7 @@ async function removeOwnerUnion(id, ownerAddress) {
   await provider.ready;
 
   const wallet = new CeloWallet(dotenv.parsed.PRIVATE_KEY, provider);
-
+  
   const query = await imoveis.imoveis.findOne({
     where: {
       id: id,
@@ -88,6 +88,7 @@ async function removeOwnerUnion(id, ownerAddress) {
       storage.abi,
       wallet
     );
+    console.log(ownerAddress)
     const response = await contrato.removeOwnerUnion(ownerAddress);
 
     console.log("Teste", response);

@@ -41,21 +41,32 @@ function CadastrarImóveis() {
         const formData = new FormData();
         formData.append("file", fileImg);
 
-        // const resFile = await axios({
-        //   method: "post",
-        //   url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-        //   data: formData,
-        //   headers: {
-        //     'pinata_api_key': `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
-        //     'pinata_secret_api_key': `${import.meta.env.VITE_APP_PINATA_API_SECRET}`,
-        //     "Content-Type": "multipart/form-data"
-        //   },
-        // });
+        const resFile = await axios({
+          method: "post",
+          url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+          data: formData,
+          headers: {
+            pinata_api_key: `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
+            pinata_secret_api_key: `${
+              import.meta.env.VITE_APP_PINATA_API_SECRET
+            }`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         const ImgHash = `https://ipfs.io/ipfs/${resFile.data.IpfsHash}`;
 
         // , , , , , , status,
-
+        axios.post("http://localhost:3001/imovel/criar", {
+          estado: formValues.estado,
+          cidade: cidade,
+          bairro: bairroI,
+          numero: numeroI,
+          logradouro: logradouro,
+          ipfsImage: ImgHash,
+          cep: cep,
+          status: status,
+        });
         console.log({
           estado: formValues.estado,
           cidade: cidade,

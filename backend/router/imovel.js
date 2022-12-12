@@ -6,7 +6,7 @@ router.post("/criar", imovelController.criarImovel); //Checado
 router.post("/alterar", imovelController.alterarImovel); // Checado
 router.post("/achar", imovelController.acharImovel); // Checado
 router.delete("/deletar", imovelController.deletarImovel); // Checado
-router.get("/achar",imovelController.acharId)
+router.put("/achar", imovelController.acharId);
 router.post("/criarContratoBlock", imovelController.criarContratoImovel); // Checado
 router.post("/addOwner", imovelController.addOwnerUnion); // Checado
 

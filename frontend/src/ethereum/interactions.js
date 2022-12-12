@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers, utils } from "ethers";
 import { factoryInstance, imovelInstance } from "./contracts/intancias";
 
 const getProvider = async () => {
@@ -25,22 +25,26 @@ export const getDonoId = async (idImovel, address) => {
 
 export const getAcoesCount = async (idImovel, address) => {
   const imovelContract = await imovelInstance(idImovel);
-  const donoId = await getDonoId(address);
-  const count = await imovelContract.acoesCount(donoId);
+  const donoId = await getDonoId(idImovel, address);
+  const count = BigNumber.from(
+    await imovelContract.acoesCount(donoId)
+  ).toNumber();
   return count;
 };
 
 export const getCondicoes = async (idImovel, address, number) => {
   const imovelContract = await imovelInstance(idImovel);
-  const donoId = await getDonoId(address);
+  const donoId = await getDonoId(idImovel, address);
   const condicoes = await imovelContract.condicoes(donoId, number);
   return condicoes;
 };
 
 export const getDataProxCobranca = async (idImovel, address) => {
   const imovelContract = await imovelInstance(idImovel);
-  const donoId = await getDonoId(address);
-  const data = await imovelContract.getDataProxCobranca(donoId);
+  const donoId = await getDonoId(idImovel, address);
+  const data = BigNumber.from(
+    await imovelContract.dataProxCobranca(donoId)
+  ).toNumber();
   return data;
 };
 
@@ -51,45 +55,54 @@ export const getOneDono = async (idImovel, id) => {
 };
 
 export const getValorCobranca = async (idImovel, address) => {
-  const imovelContract = await imovelContract(idImovel);
-  const donoId = await getDonoId(address);
-  const valor = await imovelContract.valorCobranca(donoId);
+  const imovelContract = await imovelInstance(idImovel);
+  const donoId = await getDonoId(idImovel, address);
+  const valor = BigNumber.from(
+    await imovelContract.valorCobranca(donoId)
+  ).toNumber();
   return valor;
 };
 
 export const getStatus = async (idImovel, address) => {
-  const imovelContract = await imovelContract(idImovel);
-  const donoId = await getDonoId(address);
+  const imovelContract = await imovelInstance(idImovel);
+  const donoId = await getDonoId(idImovel, address);
   const status = await imovelContract.status(donoId);
   return status;
 };
 
 export const getPrazo = async (idImovel, address) => {
-  const imovelContract = await imovelContract(idImovel);
-  const donoId = await getDonoId(address);
-  const prazo = await imovelContract.prazo(donoId);
+  const imovelContract = await imovelInstance(idImovel);
+  const donoId = await getDonoId(idImovel, address);
+  console.log("teste do donoId", donoId);
+  const prazo = BigNumber.from(await imovelContract.prazo(donoId)).toNumber();
   return prazo;
 };
 
 export const getHistoricoRecebimento = async (idImovel, address, idHist) => {
-  const imovelContract = await imovelContract(idImovel);
-  const donoId = await getDonoId(address);
-  const hist = await getHistoricoRecebimento(address, idHist);
+  const imovelContract = await imovelInstance(idImovel);
+  const donoId = await getDonoId(idImovel, address);
+  const { data, valor } = await imovelContract.historicoRecebimento(
+    donoId,
+    idHist
+  );
+  const hist = {
+    data: BigNumber.from(data).toNumber(),
+    valor: BigNumber.from(valor).toNumber(),
+  };
   // hist = {data: unixtime, valor: unixtime}
-  hist.data = new Date(hist.data * 1000);
 
   return hist;
 };
 
 export const getIdPredio = async (idImovel) => {
-  const imovelContract = await imovelContract(idImovel);
-  const idPredio = await imovelContract.idPredio();
+  const imovelContract = await imovelInstance(idImovel);
+  const idPredio = BigNumber.from(await imovelContract.idPredio()).toNumber();
   return idPredio;
 };
 
 export const getIdAcoes = async (idImovel, address, number) => {
-  const imovelContract = await imovelContract(idImovel);
-  const donoId = await getDonoId(address);
+  const imovelContract = await imovelInstance(idImovel);
+  const donoId = await getDonoId(idImovel, address);
   const acao = await imovelContract.getIdAcoes(donoId, number);
   const response = await fetch(acao).then((res) => {
     return res;

@@ -14,12 +14,20 @@ export const factoryInstance = async () => {
 };
 
 export const imovelInstance = async (id) => {
-  const address = await axios
-    .get("http://localhost:3001/imovel/achar", { id: id })
-    .then((result) => {
-      return result.enderecoBlockchain;
-    });
+  const address = await axios({
+    method: "put",
+    url: "http://localhost:3001/imovel/achar",
+    data: {
+      id: id,
+    },
+  }).then((res) => {
+    return res;
+  });
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const contract = new ethers.Contract(address, imovelJSON.abi, provider);
+  const contract = new ethers.Contract(
+    address.data.enderecoBlockchain,
+    imovelJSON.abi,
+    provider
+  );
   return contract;
 };

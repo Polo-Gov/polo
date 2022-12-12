@@ -8,16 +8,15 @@ import { useNavigate } from "react-router";
 
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import { useMetamask } from "../context/metamaskContext";
 
 const LoginMeta = () => {
 
   let navigate = useNavigate()
 
   const [provider, setProvider] = useState({});
-  const [wallet, setWallet] = useState({
-    address: "0x00000000000000000000000000000000000000",
-    balance: 0,
-  });
+
+  const { setAccount } = useMetamask()
 
   useEffect(() => {
     if (
@@ -33,26 +32,37 @@ const LoginMeta = () => {
 
 
   const connectWallet = async () => {
-    try {
-      const [account] = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
 
-      const wallet = provider.getSigner(account);
-      setWallet({
-        address: account,
-        balance: ethers.utils.formatEther(await wallet.getBalance()),
-      });
+    if (window.ethereum) {
 
-      console.log(wallet);
-      navigate("/imóveis")
+      try {
+        const res = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
 
-    } catch (error) {
-      console.log(error);
+        await setAccount(res[0])
+
+        const celoNetwork = '0xaef3'
+
+
+        if (window.ethereum.chainId !== celoNetwork) {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: celoNetwork }]
+          })
+        }else{
+
+        }
+
+        navigate("/imóveis")
+
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  
+
 
 
 
@@ -96,6 +106,7 @@ const LoginMeta = () => {
 
 
             <div className="mt-20">
+              {/*Aviso metamask*/}
               <button onClick={connectWallet} className="mb-8 ">
                 <div className="flex flex-row bg-[#f5841f] text-white rounded-md sm:h-20 items-center">
                   <p className="p-2">Conecte a sua metamask</p>
@@ -109,8 +120,8 @@ const LoginMeta = () => {
               <img src={alert} alt="" />
               <a className="text-blueGov" target="_blank" href="https://www.gov.br/governodigital/pt-br/conta-gov-br">Entenda a conta gov.br</a>
             </div>
-          <p className="mt-10 text-gray-500">para fins de desenvolvimento da plataforma, você pode acessar a página principal diretamente pelo botão abaixo:</p>
-          <button className={"bg-blueGov p-1 mt-2 pl-3 pr-3 rounded-lg text-white"}onClick={()=>{navigate("/imóveis")}}>entrar</button>
+            <p className="mt-10 text-gray-500">para fins de desenvolvimento da plataforma, você pode acessar a página principal diretamente pelo botão abaixo:</p>
+            <button className={"bg-blueGov p-1 mt-2 pl-3 pr-3 rounded-lg text-white"} onClick={() => { navigate("/imóveis") }}>entrar</button>
           </div>
 
         </div>

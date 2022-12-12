@@ -17,6 +17,7 @@ const Modal = ({ idMovel, onClick }) => {
                 id: idMovel
             }).then((result) => {
                 setContract(result.data)
+                console.log(result.data)
             })
         }
     }
@@ -26,7 +27,7 @@ const Modal = ({ idMovel, onClick }) => {
     }, [])
 
 
-    if (contract.length > 0) {
+    if (contract.length == 0) {
 
         return (
             <div className="relative">
@@ -46,10 +47,11 @@ const Modal = ({ idMovel, onClick }) => {
                 </div>
 
                 <div>
-                    {contract.map((element) => (
-                        // trocar os inputs pelo element.NOME DO ATRIBUTO 
-                        <ContratosDown endereço={"1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"} duracao={"2 anos "} tipo={"Alienação"} ultimaFisca={"01/12/2022"} proximaFisca={"02/05/2023"} valor={"R$xxxxx"} ultimaCobra={"10/12/2022"} status={"Regular"} />
-                    ))}
+
+                    <ContratosDown numero={1} endereço={"1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"} acoesCount={12} valorCobranca={"R$1200"} dataProximaCobranca={"12/08/2023"} getAllDonos={"0x9A7FaBAf77204A927B00C8c9729d6c74b4a69366"} historicoRegistrado={""} owner={"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA"} prazo={"23/09/2023"} status={"Regular"} />
+                    <ContratosDown numero={2} endereço={"1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"} acoesCount={12} valorCobranca={"R$1200"} dataProximaCobranca={"12/08/2023"} getAllDonos={"0x9A7FaBAf77204A927B00C8c9729d6c74b4a69366"} historicoRegistrado={""} owner={"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA"} prazo={"23/09/2023"} status={"Regular"} />
+                    <ContratosDown numero={3} endereço={"1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"} acoesCount={12} valorCobranca={"R$1200"} dataProximaCobranca={"12/08/2023"} getAllDonos={"0x9A7FaBAf77204A927B00C8c9729d6c74b4a69366"} historicoRegistrado={""} owner={"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA"} prazo={"23/09/2023"} status={"Regular"} />
+
                 </div>
             </div>
         )

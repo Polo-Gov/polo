@@ -17,7 +17,7 @@ const buscarImoveis = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("");
 
-  const [idMovel, setIdMovel] = useState("");
+  const [idMovel, setIdMovel] = useState(0);
 
   const [imovel, setImovel] = useState([]);
 
@@ -65,6 +65,17 @@ const buscarImoveis = () => {
         });
     }
   };
+
+  const getAllImovel = () => {
+      axios.post("http://localhost:3001/imovel/achar",{})
+      .then((result)=>{
+        setImovel(result)
+      })
+  }
+
+  useEffect(()=>{
+    getAllImovel()
+  },[])
 
   return (
     <div className={`${modalIsOpen ? "blur-sm" : "blur-none"}`}>

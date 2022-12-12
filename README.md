@@ -22,7 +22,7 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
 * [ ] Ao final do processo, acesse o link http://127.0.0.1:3000/ pelo seu navegador web preferido.
 >**Nota:** para rodar este projeto, você precisa ter o node.js v16.0.0 ou superior instalado em sua máquina.
 ### Executando a Backend
-* [ ] Repita os passos 1 e 2, só que, dessa vez, você deve navegar a pasta "backend"
+* [ ] Repita os passos 1 e 2, só que, dessa vez, você deve navegar até a pasta "backend"
 * [ ] Execute o mesmo comando `npm run polo`
 
 **Pronto, o site já está funcional e pode ser testado.**

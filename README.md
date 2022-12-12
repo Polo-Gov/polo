@@ -22,6 +22,8 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
 * [ ] Ao final do processo, acesse o link http://127.0.0.1:3000/ pelo seu navegador web preferido.
 >**Nota:** para rodar este projeto, você precisa ter o node.js v16.0.0 ou superior instalado em sua máquina.
 ### Executando a Backend
+* [ ] Repita os passos 1 e 2, só que, dessa vez, você deve navegar a pasta "backend"
+* [ ] Dessa vez, execute o comando `node index.js`
 
 > **Note:** Colocar instruções para o backend aqui
 
@@ -30,16 +32,29 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
 
  - React.js
  - Node.js
- - 
+ - Ethers.js
+ - Metamask
+ 
 ### Features
-> colocar features
+ - Adicionar contratos já existentes
+ - Adicionar imóveis
+ - Adicionar vários contratos à um imóvel
+ - Definir datas para fiscalização e cobranças
+ - Utilizar login padrão Gov.br (mock)
+ - Contratos transparentes salvos em blockchain
+ - Edição de contratos já existentes
 
 # Imagens
-![teste](/assets/imovel.png)
+Cadastro de imóvel
+![página de cadastro de imóvel](/assets/imovel.png)
+Cadastro de contrato
+![página de cadastro de contrato](/assets/contract.png)
+Login
+![página de login](/assets/login.png)
 
 # Time
 O projeto foi desenvolvido por nós, 4 estudantes de engenharia de computação no Instituto de Tecnologia e Liderança (Inteli), apaixonados por blockchain e apreciadores de um bom desafio. 
-* ***Paulo Evangelista*** - https://www.linkedin.com/in/paulo-evangelista/
-* ***Abner Silva***
-* ***Henrique Lemos***
-* ***Alberto Miranda***
+* ***Paulo Evangelista*** - https://github.com/paulo-evangelista
+* ***Abner Silva*** - https://github.com/AbnerSilvaBarbosa
+* ***Henrique Lemos*** - https://github.com/Lemos1347
+* ***Alberto Miranda*** - https://github.com/angrysine

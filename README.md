@@ -23,10 +23,9 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
 >**Nota:** para rodar este projeto, você precisa ter o node.js v16.0.0 ou superior instalado em sua máquina.
 ### Executando a Backend
 * [ ] Repita os passos 1 e 2, só que, dessa vez, você deve navegar a pasta "backend"
-* [ ] Dessa vez, execute o comando `node index.js`
+* [ ] Execute o mesmo comando `npm run polo`
 
-> **Note:** Colocar instruções para o backend aqui
-
+**Pronto, o site já está funcional e pode ser testado.**
 # Detalhes técnicos e features
 ### Tecnologias utilizadas
 

@@ -1,0 +1,856 @@
+{
+	"info": {
+		"_postman_id": "b9e73263-ec3a-4709-8ad8-ca7741825117",
+		"name": "Polo Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20515879"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "criarUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"alberto\",\r\n    \"email\":\"b@gmail.com\",\r\n    \"pass\":\"senha1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/criar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"alberto\",\r\n    \"email\":\"b@gmail.com\",\r\n    \"pass\":\"senha1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contrato",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40f1518503e74764aa0094107b78ec44f88d0db8b089114a3104d5eee1688d99",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imovelId\":0,\r\n    \"duracao\":\"2022-01-17\",\r\n    \"tipo\":\"teste\",\r\n    \"enderecoBlockchain\":\"vdsvaffdf\",\r\n    \"ultimaFiscalizacao\":\"'2022-01-17'\",\r\n    \"proximaFiscalizacao\":\"'2022-01-17'\",\r\n    \"cobrancaArrecadacao\":\"10\",\r\n    \"ultimaCobranca\":\"'2022-01-17'\",\r\n    \"status\":\"sexo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/contrato/criar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"contrato",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"imovelId\":0,\r\n    \"duracao\":\"2022-01-17\",\r\n    \"tipo\":\"teste\",\r\n    \"enderecoBlockchain\":\"vdsvaffdf\",\r\n    \"ultimaFiscalizacao\":\"'2022-01-17'\",\r\n    \"proximaFiscalizacao\":\"'2022-01-17'\",\r\n    \"cobrancaArrecadacao\":\"9\",\r\n    \"ultimaCobranca\":\"'2022-01-17'\",\r\n    \"status\":\"sexo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/contrato/alterar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"contrato",
+								"alterar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acharPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/contrato/achar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"contrato",
+								"achar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acharPorImovel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imovelId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/contrato/acharPorImovelId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"contrato",
+								"acharPorImovelId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acharPorStatus",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"sexo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/contrato/acharPorStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"contrato",
+								"acharPorStatus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "imovel",
+			"item": [
+				{
+					"name": "criarImovel✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cep\": \"cep\",\r\n    \"logradouro\": \"logradouro\",\r\n    \"numero\": \"numero\",\r\n    \"bairro\": \"bairro\",\r\n    \"cidade\": \"cidade\",\r\n    \"estado\": \"estado\",\r\n    \"status\": \"status\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/criar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterarImovel✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"cep\": \"Meu cep alterado\",\r\n    \"logradouro\": \"Meu logradouro alterado\",\r\n    \"numero\": \"Meu numero alterado\",\r\n    \"bairro\": \"Meu bairro alterado\",\r\n    \"cidade\": \"Minha cidade alterada\",\r\n    \"estado\": \"Meu estado alterado\",\r\n    \"status\": \"Meu status alterado\",\r\n    \"imagem\": \"Minha imagem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/alterar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"alterar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acharCidadeEstadoStatus✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": \"estado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/achar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"achar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletarImovel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/deletar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"deletar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Achar Predio✅",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/achar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"achar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contratos call",
+			"item": [
+				{
+					"name": "owner✅",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner\" :\"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/factory/owner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"factory",
+								"owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addOwner✅",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"union\":\"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/factory/addUnion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"factory",
+								"addUnion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeUnion✅",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"union\":\"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/factory/removeUnion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"factory",
+								"removeUnion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criarContratoImovel✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idImovel\":8,\r\n    \"prazos\":[213456789],\r\n    \"donos\":[\"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"],\r\n    \"status\":[true],\r\n    \"condicoes\":[\"Minhas condicoes 2\"],\r\n    \"valorCobranca\":[12],\r\n    \"dataProximaCobranca\":[13],\r\n    \"dataRecebimento\":[[14]],\r\n    \"valoresRecebimento\":[[15]]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/criarContratoBlock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"criarContratoBlock"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "imovel.sol",
+			"item": [
+				{
+					"name": "addOwner✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"ownerAddress\":\"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/addOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"addOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove owner✅",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"ownerAddress\": \"0xa61d347F25D076BAF69Eb632Ce55167B60A2C7eA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/removeOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"removeOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiconar dono✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"donoAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"prazo\": 123,\n    \"status\": true,\n    \"condicoes\": \"minhas condicoes\",\n    \"valorCobranca\": 1234,\n    \"dataProxCobranca\": 2134,\n    \"datasRecebimento\": [123],\n    \"valoresRecebimento\": [213]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/addDono",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"addDono"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Dono ✅",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 12,\r\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/removeDono",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"removeDono"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Acoes ✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"acao\": \"Minha nova acao\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateAcoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateAcoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update prazo✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"prazo\": 24\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updatePrazo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updatePrazo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update condicoes✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"condicoes\": \"Minha nova condicao vinda do postman\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateCondicoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateCondicoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Valor de cobranca✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"cobranca\": 2424\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateValorCobranca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateValorCobranca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update DataProxCobranca✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"data\": 3535\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateDataProxCobranca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateDataProxCobranca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update historicoDeRecebimento✅",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 13,\n    \"ownerAddress\": \"0x23511a29ad92D438823454C26812b7A604f5186F\",\n    \"hist\": {\"dataRecebimento\": 2424, \"valorRecebimento\": 3535}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/imovel/updateHistoricoRecebimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"imovel",
+								"updateHistoricoRecebimento"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

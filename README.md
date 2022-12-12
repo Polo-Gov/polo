@@ -43,7 +43,7 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
  - Contratos transparentes salvos em blockchain
  - Edição de contratos já existentes
 ### Atenção
- - Mesmo com algumas integrações estando em mockadas, as interações estão prontas na pasta **"backend/src/ethereum"**
+ - Mesmo com algumas integrações estando em mock (simulação), as interações estão prontas na pasta **"backend/src/ethereum"**
  - As APIs e rotas estão completamente documentadas na pasta **"Postman"**
 
 # Imagens

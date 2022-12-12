@@ -132,7 +132,7 @@ const EditarContrato = () => {
     
         <button
           onClick={sendEditedContract}
-          className="p-2 text-blue-800 border-blueGov border-2 text-white rounded-lg mb-10 font-medium"
+          className="p-2 text-blue-800 border-blueGov border-2  rounded-lg mb-10 font-medium"
         >
           Voltar a página de imóveis
         </button>

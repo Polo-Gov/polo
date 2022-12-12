@@ -6,7 +6,7 @@ import { useNavigate } from "react-router"
 
 import "../index.css"
 
-const ContratosDown = ({ endereço, acoesCount, valorCobranca, dataProximaCobranca, getAllDonos, historicoRegistrado, owner, prazo, status, }) => {
+const ContratosDown = ({ numero,endereço, acoesCount, valorCobranca, dataProximaCobranca, getAllDonos, historicoRegistrado, owner, prazo, status, }) => {
 
   const [openDown, setOpenDown] = useState(false)
   const navigate = useNavigate()
@@ -17,14 +17,14 @@ const ContratosDown = ({ endereço, acoesCount, valorCobranca, dataProximaCobran
 
 
   return (
-    <div>
+    <div className="mb-5">
       <div
         className="bg-blueGov rounded-lg h-14 flex items-center justify-between cursor-pointer"
         onClick={() => {
           setOpenDown(!openDown);
         }}
       >
-        <h1 className="font-bold ml-2 text-white">Contrato - 1</h1>
+        <h1 className="font-bold ml-2 text-white">Contrato - {numero} </h1>
         <img className="mr-2" src={arrowDown} alt="" />
         <div></div>
       </div>

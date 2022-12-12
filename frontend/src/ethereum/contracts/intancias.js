@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import contractAddresses from "../../backend/src/contractsAddresses.json";
 import factotyJSON from "./Factory.json";
 import imovelJSON from "./Imovel.json";
 import axios from "axios";

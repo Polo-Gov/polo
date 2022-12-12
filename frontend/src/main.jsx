@@ -9,6 +9,7 @@ import LoginMeta from "./pages/loginMetamask"
 import "./index.css";
 import EditarContrato from "./pages/editarContrato";
 import CadastrarContratos from "./pages/CadastrarContratos";
+import MetamaskProvider from "./context/metamaskContext";
 
 const router = createBrowserRouter([
   {
@@ -18,27 +19,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <LoginMeta />,
+    element: <MetamaskProvider><LoginMeta /></MetamaskProvider> ,
     errorElement: <NotFound></NotFound>,
   },
   {
     path: "/imóveis",
-    element: <BuscarImoveis />,
+    element: <MetamaskProvider><BuscarImoveis /></MetamaskProvider> ,
     errorElement: <NotFound></NotFound>,
   },
   {
     path: "/cadastrarImóveis",
-    element: <CadastrarImoveis />,
+    element: <MetamaskProvider><CadastrarImoveis /></MetamaskProvider> ,
     errorElement: <NotFound></NotFound>,
   },
   {
     path:"/cadastrarContratos",
-    element:<CadastrarContratos/>,
+    element:<MetamaskProvider><CadastrarContratos/></MetamaskProvider> ,
     errorElement: <NotFound></NotFound>
   },
   {
     path:"/editarContrato/:id",
-    element:<EditarContrato/>,
+    element:<MetamaskProvider> <EditarContrato/></MetamaskProvider>,
     errorElement: <NotFound></NotFound>
   }
 ]);

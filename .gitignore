@@ -27,3 +27,4 @@ blockchain/.env
 frontend/.env
 
 db/teste.db
+*.db

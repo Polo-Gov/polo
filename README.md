@@ -35,7 +35,7 @@ O desenvolvimento futuro da plataforma foi levado em conta. Mesmo utilizando as 
 > colocar features
 
 # Imagens
-![teste](assets/imoel.png)
+![teste](/assets/imovel.png)
 
 # Time
 O projeto foi desenvolvido por nós, 4 estudantes de engenharia de computação no Instituto de Tecnologia e Liderança (Inteli), apaixonados por blockchain e apreciadores de um bom desafio. 

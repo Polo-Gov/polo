@@ -27,6 +27,16 @@ function CadastrarImóveis() {
 
   const sendFileToIPFS = async (e) => {
     e.preventDefault();
+    console.log(
+      fileImg,
+      formValues.estado,
+      cidade,
+      bairroI,
+      numeroI,
+      logradouro,
+      cep,
+      status
+    );
 
     if (
       fileImg &&
@@ -48,8 +58,9 @@ function CadastrarImóveis() {
           data: formData,
           headers: {
             pinata_api_key: `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
-            pinata_secret_api_key: `${import.meta.env.VITE_APP_PINATA_API_SECRET
-              }`,
+            pinata_secret_api_key: `${
+              import.meta.env.VITE_APP_PINATA_API_SECRET
+            }`,
             "Content-Type": "multipart/form-data",
           },
         });
@@ -57,24 +68,22 @@ function CadastrarImóveis() {
         const ImgHash = `https://ipfs.io/ipfs/${resFile.data.IpfsHash}`;
 
         // , , , , , , status,
-        axios.post("http://localhost:3001/imovel/criar", {
-          estado: formValues.estado,
-          cidade: cidade,
-          bairro: bairroI,
-          numero: numeroI,
-          logradouro: logradouro,
-          ipfsImage: ImgHash,
-          cep: cep,
-          status: status,
-        }).then(() => {
-          let navigate = useNavigate()
-          navigate("/cadastrarContratos")
-        });
-
-
-
-
-
+        axios
+          .post("http://localhost:3001/imovel/criar", {
+            estado: formValues.estado,
+            cidade: cidade,
+            bairro: bairroI,
+            numero: numeroI,
+            logradouro: logradouro,
+            ipfsImage: ImgHash,
+            cep: cep,
+            status: status,
+          })
+          .then(() => {
+            let navigate = useNavigate();
+            navigate("/cadastrarContratos");
+          });
+        alert("Imóvel cadastrado com sucesso!");
         //Take a look at your Pinata Pinned section, you will see a new file added to you list.
       } catch (error) {
         console.log({
@@ -130,8 +139,9 @@ function CadastrarImóveis() {
       </div>
 
       <h1
-        className={`${visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
-          }`}
+        className={`${
+          visibleInfo ? "text-center mt-5 text-red-500 font-bold" : "hidden"
+        }`}
       >
         Campo obrigatório não preenchido
       </h1>
@@ -139,9 +149,9 @@ function CadastrarImóveis() {
       <div className="flex justify-center gap-24 mt-8 sm:flex-col sm:items-center sm:gap-10">
         <div>
           <div className="flex items-center mb-3">
-            <img src={cityscape} alt="" />
+            <img src={estado} alt="" />
             <h1 className="ml-3 text-lg">
-              Cidade <span className="text-red-500">*</span>
+              Estado <span className="text-red-500">*</span>
             </h1>
           </div>
           <DropdownBrazilianStates
@@ -151,9 +161,9 @@ function CadastrarImóveis() {
 
         <div>
           <div className="flex items-center mb-3">
-            <img src={estado} alt="" />
+            <img src={cityscape} alt="" />
             <h1 className="ml-3 text-lg">
-              Estado <span className="text-red-500">*</span>
+              Cidade <span className="text-red-500">*</span>
             </h1>
           </div>
           <DropdownBrazilianCities
@@ -244,15 +254,16 @@ function CadastrarImóveis() {
               Status do imóvel <span className="text-red-500">*</span>
             </h1>
           </div>
-          <input
+          <select
             className="border-2 border-gray-400 rounded-lg w-64 text-center"
-            type="text"
-            name=""
-            id=""
             onChange={(e) => {
               setStatus(e.target.value);
             }}
-          />
+          >
+            <option value="">Escolha uma opção</option>
+            <option value="regular">Regular</option>
+            <option value="irregular">Irregular</option>
+          </select>
         </div>
       </div>
 

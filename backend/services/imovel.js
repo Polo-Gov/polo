@@ -73,7 +73,15 @@ class imovel {
       throw new Error("erro ao alterar imovel");
     }
   }
-
+  async acharId(id) {
+    try {
+      const Imovel = await this.imovel;
+      const imovel = await Imovel.findOne({where: {id:id}
+    })  
+    return imovel
+    } catch (error) {
+    throw new Error("error ao procurar por id")
+  }}
   async acharImovel(cidade, estado, estatus) {
     let args = {};
     if (cidade) args.cidade = cidade;

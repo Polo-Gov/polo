@@ -103,6 +103,14 @@ async function acharImovel(req, res) {
       res.status(400).send({ error: err.message });
     });
 }
+async function acharId(req,res) {
+  const {id} = req.body 
+  Imovel.acharId(id).then((response) => {
+    res.status(200).send(response);
+  }).catch(err=> {
+    res.status(400).send({error:err.message})
+  })
+}
 async function deletarImovel(req, res) {
   const { id } = req.body;
   Imovel.deletarImovel(id)
@@ -314,4 +322,5 @@ module.exports = {
   updateDataProxCobranca,
   updateHistoricoRecebimento,
   getOwner,
+  acharId
 };
